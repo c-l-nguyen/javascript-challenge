@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <title>UFO Finder Basic</title>
+  <title>UFO Finder Advanced</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link rel="stylesheet" href="UFO-level-1/static/css/style.css">
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -15,15 +15,15 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">UFO Sightings
-            <img class="nav-ufo" src="UFO-level-1/static/images/ufo.svg">
+          <a class="navbar-brand" href="../index.html">UFO Sightings
+            <img class="nav-ufo" src="static/images/ufo.svg">
           </a>
         </div>
       </div>
     </nav>
     <div class="hero text-center">
       <h1>UFO Sightings</h1>
-      <audio id="x-files" src="UFO-level-1/static/audio/x-files.mp3" preload="auto">
+      <audio id="x-files" src="static/audio/x-files.mp3" preload="auto">
       </audio>
       <a style="color:lawngreen;" onClick="togglePlay()"><p style="color:lawngreen;">The Truth is Out There</p></a>
     </div>
@@ -41,13 +41,29 @@
                         <label for="date">Enter a Date</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/11/2010">
                       </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a City</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="Anchorage">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a State</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="AK">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a Country</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="US">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a Shape</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="circle">
+                      </li>
                     </ul>
                   </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
                 </form>
               </div>
             </div>
-            <a href="UFO-level-2/advanced_index.html">Advanced Search</a>
+            <a href="../index.html">Basic Search</a>
           </aside>
         </div>
         <div class="col-md-10">
@@ -75,8 +91,8 @@
     </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-  <script src="UFO-level-1/static/js/data.js"></script>
-  <script src="UFO-level-1/static/js/app.js"></script>
+  <script src="static/js/data.js"></script>
+  <script src="static/js/app.js"></script>
 </body>
 
 </html>

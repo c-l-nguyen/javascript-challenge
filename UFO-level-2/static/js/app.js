@@ -1,5 +1,5 @@
 // from data.js
-const tableData = data;
+var tableData = data;
 
 // set the reference to the table body
 let tbody = d3.select("tbody");
@@ -53,7 +53,7 @@ dateField.on("keyup", function(event) {
 })
 
 // you were asking for this when you put up that text
-const myAudio = document.getElementById("x-files");
+var myAudio = document.getElementById("x-files");
 
 function togglePlay() {
     return myAudio.paused ? myAudio.play() : myAudio.pause();
