@@ -51,3 +51,10 @@ dateField.on("keyup", function(event) {
         filterDate();
     }
 })
+
+// you were asking for this when you put up that text
+var myAudio = document.getElementById("x-files");
+
+function togglePlay() {
+    return myAudio.paused ? myAudio.play() : myAudio.pause();
+  };
