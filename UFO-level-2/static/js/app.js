@@ -1,5 +1,5 @@
 // from data.js
-var tableData = data;
+const tableData = data;
 
 // set the reference to the table body
 let tbody = d3.select("tbody");
@@ -25,21 +25,24 @@ function filterDate(){
     // get the user's entered date value
     let userDate = dateField.property("value");
 
-    // filter tableData for observations with matching dates
-    let tableDateMatch = tableData.filter(obs => obs.datetime == userDate);
+    // only filter if user entered a date
+    if(userDate){
+        // filter tableData for observations with matching dates
+        let tableDateMatch = tableData.filter(obs => obs.datetime == userDate);
 
-    // wipe out the tbody to be able to write out new table using tableDateMatch values
-    tbody.html("");
+        // wipe out the tbody to be able to write out new table using tableDateMatch values
+        tbody.html("");
 
-    // fill in observations only where date matches user input
-    tableDateMatch.forEach(row => {
-        tbody.append("tr");
-    
-        for (key in row){
-            const cell = tbody.append("td");
-            cell.text(row[key]);
-        }
-    });
+        // fill in observations only where date matches user input
+        tableDateMatch.forEach(row => {
+            tbody.append("tr");
+        
+            for (key in row){
+                const cell = tbody.append("td");
+                cell.text(row[key]);
+            }
+        });
+    }
 }
 
 // define what happens when user clicks the button
@@ -53,7 +56,7 @@ dateField.on("keyup", function(event) {
 })
 
 // you were asking for this when you put up that text
-var myAudio = document.getElementById("x-files");
+const myAudio = document.getElementById("x-files");
 
 function togglePlay() {
     return myAudio.paused ? myAudio.play() : myAudio.pause();
