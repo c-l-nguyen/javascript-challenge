@@ -68,8 +68,32 @@ function filterObs(){
 // define what happens when user clicks the button
 button.on("click", filterObs);
 
-// alternatively allow user to just hit Enter to filter by date
+// alternatively allow user to just hit Enter to filter
 dateField.on("keyup", function(event) {
+    if (d3.event.keyCode == 13){
+        filterObs();
+    }
+});
+
+cityField.on("keyup", function(event) {
+    if (d3.event.keyCode == 13){
+        filterObs();
+    }
+});
+
+stateField.on("keyup", function(event) {
+    if (d3.event.keyCode == 13){
+        filterObs();
+    }
+});
+
+countryField.on("keyup", function(event) {
+    if (d3.event.keyCode == 13){
+        filterObs();
+    }
+});
+
+shapeField.on("keyup", function(event) {
     if (d3.event.keyCode == 13){
         filterObs();
     }
