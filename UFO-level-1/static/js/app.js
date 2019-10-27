@@ -14,6 +14,7 @@ tableData.forEach(row => {
     }
 });
 
+// define references to date field and button
 let dateField = d3.select("#datetime");
 const button = d3.select("#filter-btn");
 
@@ -42,7 +43,7 @@ function filterDate(){
                 cell.text(row[key]);
             }
         });
-    }
+    };
 }
 
 // define what happens when user clicks the button
@@ -53,11 +54,11 @@ dateField.on("keyup", function(event) {
     if (d3.event.keyCode == 13){
         filterDate();
     }
-})
+});
 
 // you were asking for this when you put up that text
 const myAudio = document.getElementById("x-files");
 
 function togglePlay() {
     return myAudio.paused ? myAudio.play() : myAudio.pause();
-  };
+};
