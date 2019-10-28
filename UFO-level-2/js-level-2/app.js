@@ -117,41 +117,24 @@ function download(){
     saveAs(blob, "ufo_sightings.json");
 }
 
+// run filterObs function if Enter key is pressed
+function enterFilterObs(){
+    if (d3.event.keyCode == 13){
+        filterObs();
+    }
+}
+
 // define what happens when user clicks the button
 button.on("click", filterObs);
 reset.on("click", resetData);
 jsonDownload.on("click", download);
 
 // alternatively allow user to just hit Enter to filter
-dateField.on("keyup", function(event) {
-    if (d3.event.keyCode == 13){
-        filterObs();
-    }
-});
-
-cityField.on("keyup", function(event) {
-    if (d3.event.keyCode == 13){
-        filterObs();
-    }
-});
-
-stateField.on("keyup", function(event) {
-    if (d3.event.keyCode == 13){
-        filterObs();
-    }
-});
-
-countryField.on("keyup", function(event) {
-    if (d3.event.keyCode == 13){
-        filterObs();
-    }
-});
-
-shapeField.on("keyup", function(event) {
-    if (d3.event.keyCode == 13){
-        filterObs();
-    }
-});
+dateField.on("keyup", enterFilterObs);
+cityField.on("keyup", enterFilterObs);
+stateField.on("keyup", enterFilterObs);
+countryField.on("keyup", enterFilterObs);
+shapeField.on("keyup", enterFilterObs);
 
 // you were asking for this when you put up that text
 const myAudio = document.getElementById("x-files");
