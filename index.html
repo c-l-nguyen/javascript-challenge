@@ -30,10 +30,11 @@
       </a>
     </div>
     <div class="container">
-      <button class="btn btn-default dropdown-toggle pull-right" id="menu1" type="button" data-toggle="dropdown">Download
-        <span class="caret"></span></button>
+      <button class="btn btn-default dropdown-toggle pull-right" id="download-menu" type="button" data-toggle="dropdown">Download
+        <span class="caret"></span>
+      </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JSON</a></li> 
+          <li role="presentation"><a id="download-json" role="menuitem" tabindex="-1">JSON</a></li> 
         </ul>
       <div class="row margin-top-25">
         <div class="col-md-2">
@@ -41,7 +42,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
-                <form onSubmit="return false;">
+                <form id= "ufo-form" onSubmit="return false;">
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
@@ -84,12 +85,13 @@
       <span class="bottom">UFO Sightings</span>
     </footer>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-  <script src="static/js/data.js"></script>
-  <script src="UFO-level-1/js-level-1/app.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <script src="static/js/data.js"></script>
+  <script src="UFO-level-1/js-level-1/app.js"></script>
 </body>
 
 </html>

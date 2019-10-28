@@ -1,8 +1,10 @@
 // from data.js
 const tableData = data;
+let tableMatch = null;
 
-// set the reference to the table body
+// set the reference to the table body and initialize filter flag
 let tbody = d3.select("tbody");
+let filtered = 0;
 
 // fill in full table by default
 tableData.forEach(row => {
@@ -23,11 +25,15 @@ let shapeField   = d3.select("#shape");
 
 const button = d3.select("#filter-btn");
 const reset = d3.select("#reset-btn");
+const jsonDownload = d3.select("#download-json");
 
-// what happens when user clicks Filter Table button
+// filter the table by properties
 function filterObs(){
     // Prevent the page from refreshing
     d3.event.preventDefault();
+
+    // flag that table is filtered
+    filtered = 1;
 
     // get the user-entered values
     let userDate    = dateField.property("value");
@@ -38,6 +44,9 @@ function filterObs(){
 
     // only filter if user entered a value
     if(userDate || userCity || userState || userCountry || userShape){
+        // flag that table is filtered
+        filtered = 1;
+
         // use only the conditions that have values entered and dynamically build up condition statement
         let userArray = [["datetime", userDate], ["city", userCity], ["state", userState], ["country", userCountry], ["shape", userShape]];
         let existingArray = userArray.filter(user => user[1] !== "");
@@ -49,7 +58,7 @@ function filterObs(){
         //                                         (obs.state == userState) &&
         //                                         (obs.country == userCountry) &&
         //                                         (obs.shape == userShape) );
-        let tableMatch = tableData.filter(obs => eval(condition));
+        tableMatch = tableData.filter(obs => eval(condition));
 
         // wipe out the tbody to be able to write out new table
         tbody.html("");
@@ -71,6 +80,12 @@ function resetData(){
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
+    // reset the form
+    document.forms['ufo-form'].reset()
+
+    // flag that table is not filtered
+    filtered = 0;
+
     // wipe out the tbody to be able to write out new table
     tbody.html("");
 
@@ -85,9 +100,27 @@ function resetData(){
     });
 }
 
+// download query results as JSON file
+function download(){
+    let jsonDownloadFile = tableData;
+
+    if (filtered){
+        jsonDownloadFile = tableMatch;
+    } else {
+        jsonDownloadFile = tableData;
+    }
+
+    let blob = new Blob([JSON.stringify(jsonDownloadFile,undefined,2)], {
+        type: "application/json"
+    });
+
+    saveAs(blob, "ufo_sightings.json");
+}
+
 // define what happens when user clicks the button
 button.on("click", filterObs);
 reset.on("click", resetData);
+jsonDownload.on("click", download);
 
 // alternatively allow user to just hit Enter to filter
 dateField.on("keyup", function(event) {
