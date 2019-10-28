@@ -14,7 +14,7 @@ tableData.forEach(row => {
     }
 });
 
-// define references to fields and button
+// define references to fields and buttons
 let dateField    = d3.select("#datetime");
 let cityField    = d3.select("#city");
 let stateField   = d3.select("#state");
@@ -22,6 +22,7 @@ let countryField = d3.select("#country");
 let shapeField   = d3.select("#shape");
 
 const button = d3.select("#filter-btn");
+const reset = d3.select("#reset-btn");
 
 // what happens when user clicks Filter Table button
 function filterObs(){
@@ -50,7 +51,7 @@ function filterObs(){
         //                                         (obs.shape == userShape) );
         let tableMatch = tableData.filter(obs => eval(condition));
 
-        // wipe out the tbody to be able to write out new table using tableDateMatch values
+        // wipe out the tbody to be able to write out new table
         tbody.html("");
 
         // fill in observations only where date matches user input
@@ -65,8 +66,28 @@ function filterObs(){
     };
 }
 
+// reset table to original display
+function resetData(){
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // wipe out the tbody to be able to write out new table
+    tbody.html("");
+
+    // fill in observations only where date matches user input
+    tableData.forEach(row => {
+        tbody.append("tr");
+    
+        for (key in row){
+            const cell = tbody.append("td");
+            cell.text(row[key]);
+        }
+    });
+}
+
 // define what happens when user clicks the button
 button.on("click", filterObs);
+reset.on("click", resetData);
 
 // alternatively allow user to just hit Enter to filter
 dateField.on("keyup", function(event) {

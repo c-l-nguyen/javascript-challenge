@@ -30,7 +30,12 @@
       </a>
     </div>
     <div class="container">
-      <div class="row margin-top-50">
+      <button class="btn btn-default dropdown-toggle pull-right" id="menu1" type="button" data-toggle="dropdown">Download
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JSON</a></li> 
+        </ul>
+      <div class="row margin-top-25">
         <div class="col-md-2">
           <aside class="filters">
             <div class="panel panel-default">
@@ -46,6 +51,9 @@
                     </ul>
                   </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  <button id="reset-btn" type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                  </button>
                 </form>
               </div>
             </div>
@@ -57,13 +65,13 @@
             <table id="ufo-table" class="table table-striped">
               <thead>
                 <tr>
-                  <th class="table-head">Date</th>
-                  <th class="table-head">City</th>
-                  <th class="table-head">State</th>
-                  <th class="table-head">Country</th>
-                  <th class="table-head">Shape</th>
-                  <th class="table-head">Duration</th>
-                  <th class="table-head">Comments</th>
+                  <th class="table-head">DATE</th>
+                  <th class="table-head">CITY</th>
+                  <th class="table-head">STATE</th>
+                  <th class="table-head">COUNTRY</th>
+                  <th class="table-head">SHAPE</th>
+                  <th class="table-head">DURATION</th>
+                  <th class="table-head">COMMENTS</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -79,6 +87,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
   <script src="static/js/data.js"></script>
   <script src="UFO-level-1/js-level-1/app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>

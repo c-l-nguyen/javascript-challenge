@@ -14,9 +14,10 @@ tableData.forEach(row => {
     }
 });
 
-// define references to date field and button
+// define references to date field and buttons
 let dateField = d3.select("#datetime");
 const button = d3.select("#filter-btn");
+const reset = d3.select("#reset-btn");
 
 // what happens when user clicks Filter Table button
 function filterDate(){
@@ -31,7 +32,7 @@ function filterDate(){
         // filter tableData for observations with matching dates
         let tableDateMatch = tableData.filter(obs => obs.datetime == userDate);
 
-        // wipe out the tbody to be able to write out new table using tableDateMatch values
+        // wipe out the tbody to be able to write out new table
         tbody.html("");
 
         // fill in observations only where date matches user input
@@ -46,8 +47,28 @@ function filterDate(){
     };
 }
 
-// define what happens when user clicks the button
+// reset table to original display
+function resetData(){
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // wipe out the tbody to be able to write out new table
+    tbody.html("");
+
+    // fill in observations only where date matches user input
+    tableData.forEach(row => {
+        tbody.append("tr");
+    
+        for (key in row){
+            const cell = tbody.append("td");
+            cell.text(row[key]);
+        }
+    });
+}
+
+// define what happens when user clicks the buttons
 button.on("click", filterDate);
+reset.on("click", resetData);
 
 // alternatively allow user to just hit Enter to filter by date
 dateField.on("keyup", function(event) {
