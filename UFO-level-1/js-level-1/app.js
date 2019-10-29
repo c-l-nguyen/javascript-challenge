@@ -21,6 +21,7 @@ let dateField = d3.select("#datetime");
 const button = d3.select("#filter-btn");
 const reset = d3.select("#reset-btn");
 const jsonDownload = d3.select("#download-json");
+const csvDownload = d3.select("#download-csv");
 
 // filter the table by date
 function filterDate(){
@@ -78,15 +79,40 @@ function resetData(){
     });
 }
 
-// download query results as JSON file
-function download(){
-    let jsonDownloadFile = tableData;
+// download query results as CSV file
+function arrayToCSV(objArray) {
+    let csv = '';
+    let header = Object.keys(objArray[0]).join(',');
+    let values = objArray.map(o => Object.values(o).join(',')).join('\n');
 
-    if (filtered){
-        jsonDownloadFile = tableMatch;
+    csv += header + '\n' + values;
+    return csv;
+}
+
+// return full table or filtered table
+function tableReturned(filtered_val){
+    if (filtered_val){
+        return tableMatch;
     } else {
-        jsonDownloadFile = tableData;
+        return tableData;
     }
+}
+
+// download query results as CSV file
+function downloadCSV(){
+    let jsonFile = tableReturned(filtered);
+    let csvDownloadFile = arrayToCSV(jsonFile);
+
+    let blob = new Blob([csvDownloadFile], {
+        type: "text/plain;charset=utf-8"
+    });
+
+    saveAs(blob, "ufo_sightings.csv");
+}
+
+// download query results as JSON file
+function downloadJSON(){
+    let jsonDownloadFile = tableReturned(filtered);
 
     let blob = new Blob([JSON.stringify(jsonDownloadFile,undefined,2)], {
         type: "application/json"
@@ -98,7 +124,8 @@ function download(){
 // define what happens when user clicks the buttons
 button.on("click", filterDate);
 reset.on("click", resetData);
-jsonDownload.on("click", download);
+jsonDownload.on("click", downloadJSON);
+csvDownload.on("click", downloadCSV);
 
 // alternatively allow user to just hit Enter to filter by date
 dateField.on("keyup", function() {
