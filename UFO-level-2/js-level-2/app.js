@@ -129,12 +129,8 @@ button.on("click", filterObs);
 reset.on("click", resetData);
 jsonDownload.on("click", download);
 
-// alternatively allow user to just hit Enter to filter
-dateField.on("keyup", enterFilterObs);
-cityField.on("keyup", enterFilterObs);
-stateField.on("keyup", enterFilterObs);
-countryField.on("keyup", enterFilterObs);
-shapeField.on("keyup", enterFilterObs);
+// alternatively allow user to just hit Enter to filter for any field
+d3.selectAll(".form-control").on("keyup",enterFilterObs);
 
 // you were asking for this when you put up that text
 const myAudio = document.getElementById("x-files");
